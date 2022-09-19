@@ -10,7 +10,7 @@ import { useNavigation } from "@react-navigation/native";
 export function Home() {
   const [games, setGame] = useState<GameCardProps[]>([]);
   useEffect(() => {
-    fetch("http://e7f1-201-69-9-124.ngrok.io/games")
+    fetch("http://b95b-201-69-9-124.ngrok.io/games")
       .then((response) => response.json())
       .then((data) => setGame(data));
   });

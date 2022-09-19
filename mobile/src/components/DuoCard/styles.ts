@@ -23,6 +23,7 @@ export const styles = StyleSheet.create({
   buttonTitle:{
     color:THEME.COLORS.TEXT,
     fontSize:THEME.FONT_SIZE.SM,
-    fontFamily:THEME.FONT_FAMILY.SEMI_BOLD
+    fontFamily:THEME.FONT_FAMILY.SEMI_BOLD,
+    marginLeft:8
   }
 });

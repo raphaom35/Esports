@@ -10,24 +10,29 @@ import { THEME } from "../../theme";
 import logoImg from "../../assets/logo-nlw-esports.png";
 import { Heading } from "../../components/Heading";
 import { DuoCard, DuoCardProps } from "../../components/DuoCard";
-
+import { DuoMatch } from "../../components/DuoMatch";
 export function Game() {
   const [duos, setDous] = useState<DuoCardProps[]>([]);
+  const [discordDouSelected, setDiscordDouSelected] = useState("");
   const route = useRoute();
   const game = route.params as GameParams;
 
   const navigation = useNavigation();
 
-
+  async function getDiscordUser(asdId: string) {
+    fetch(`http://b95b-201-69-9-124.ngrok.io/ads/${asdId}/discord`)
+      .then((response) => response.json())
+      .then((data) => setDiscordDouSelected(data.discord));
+  }
 
   function handleGoBack() {
     navigation.goBack();
   }
   useEffect(() => {
-    fetch(`http://e7f1-201-69-9-124.ngrok.io/games/${game.id}/ads`)
+    fetch(`http://b95b-201-69-9-124.ngrok.io/games/${game.id}/ads`)
       .then((response) => response.json())
       .then((data) => setDous(data));
-  });
+  }, []);
   return (
     <Background>
       <SafeAreaView style={styles.container}>
@@ -52,7 +57,7 @@ export function Game() {
           data={duos}
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => (
-            <DuoCard data={item} onConnect={() => {}} />
+            <DuoCard data={item} onConnect={() => getDiscordUser(item.id)} />
           )}
           horizontal
           contentContainerStyle={[
@@ -65,6 +70,11 @@ export function Game() {
               Não há anúncios publicados para esse jogo
             </Text>
           }
+        />
+        <DuoMatch
+          onClose={() => setDiscordDouSelected("")}
+          visible={discordDouSelected.length > 0}
+          discord={discordDouSelected}
         />
       </SafeAreaView>
     </Background>

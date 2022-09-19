@@ -13,8 +13,8 @@ Check your friends to see what they are posting in their favorite games
 </p>
 
 <div align="center">
-<img src="/gofinances.gif" width="300" height=500 />
-
+<img src="/mobile.gif" width="300" height=450 />
+![](./web.gif)
 </div>
 
 <hr />

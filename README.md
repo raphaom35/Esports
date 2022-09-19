@@ -14,7 +14,7 @@ Check your friends to see what they are posting in their favorite games
 
 <div align="center">
 <img src="/mobile.gif" width="300" height=450 />
-![](./web.gif)
+<img src="/web.gif" width="500" height=500 />
 </div>
 
 <hr />
